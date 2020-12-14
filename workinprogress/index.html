@@ -12,6 +12,7 @@
         }
         body{
             background: #333;
+            color: sandybrown;
         }
         .container{
             width: 80%;
@@ -23,9 +24,10 @@
         .title{
             border: 1px solid transparent;
             margin-bottom: 20px;
-            color: white;
         }
-        
+        .color{
+            color: lightseagreen;
+        }
     </style>
 </head>
 <body>
@@ -40,7 +42,7 @@
     
     <script>
     // Stampare a schermo un messaggio all’interno di un h1, utilizzando i data.
-    //Bonus: Aggiungere un’immagine presa anch’essa da un data
+    // Bonus: Aggiungere un’immagine presa anch’essa da un data
         let app = new Vue({
             el: ".container",
             data: {
@@ -48,28 +50,24 @@
                 //bonus
                 img: "https://www.touringclub.it/sites/default/files/styles/gallery_full/public/immagini_georiferite/gettyimages-649067370.jpg?itok=BgjbldQE",
                 alt: "Immagine di una spiaggia in estate.",
-                classColor: "white"
+                classColor: ""
             },
             methods: {
-                dance: function(){
-                    if(this.classColor === "white"){
-                        app.classColor = "lightblue";
+                flash: function() {
+                    if(this.classColor === "color"){
+                        this.classColor = "";
+                        //console.log("this.classColor = " + this.classColor);
                     }
                     else{
-                        app.classColor = "white";
+                        this.classColor = "color";
+                        //console.log("this.classColor = " + this.classColor);
                     }
-                    return this.classColor;
-                },
-                stopDance: function() {
-                    clearInterval(this.dance)
+                    return app.classColor;
                 }
-            }
-            
+            }            
         });
-
-        //const light = 
-        const stopDance = setInterval(app.dance(), 1000);
-
+        const stopFlash = setInterval(app.flash, 1000);
+        //clearInterval(stopFlash);
     </script>
 
 </body>
