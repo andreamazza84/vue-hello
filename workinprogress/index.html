@@ -12,7 +12,6 @@
         }
         body{
             background: #333;
-            font-family: Arial, Helvetica, sans-serif;
         }
         .container{
             width: 80%;
@@ -31,7 +30,7 @@
 </head>
 <body>
     <div class="container align-center">
-        <h1 class="title align-center">{{message}}</h1>
+        <h1 class="title align-center" :class="classColor">{{message}}</h1>
         <!-- bonus -->
         <img :src="img" :alt="alt">
     </div>
@@ -50,8 +49,26 @@
                 img: "https://www.touringclub.it/sites/default/files/styles/gallery_full/public/immagini_georiferite/gettyimages-649067370.jpg?itok=BgjbldQE",
                 alt: "Immagine di una spiaggia in estate.",
                 classColor: "white"
-            }            
+            },
+            methods: {
+                dance: function(){
+                    if(this.classColor === "white"){
+                        app.classColor = "lightblue";
+                    }
+                    else{
+                        app.classColor = "white";
+                    }
+                    return this.classColor;
+                },
+                stopDance: function() {
+                    clearInterval(this.dance)
+                }
+            }
+            
         });
+
+        //const light = 
+        const stopDance = setInterval(app.dance(), 1000);
 
     </script>
 
